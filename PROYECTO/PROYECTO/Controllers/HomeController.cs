@@ -12,6 +12,7 @@ namespace PROYECTO.Controllers
     {
         PICTOCAMEntities1 db = new PICTOCAMEntities1();
         // GET: Home
+        //esta es una prueba :V
         public void Sesion(string user)
         {
             Session["UserName"] = user;

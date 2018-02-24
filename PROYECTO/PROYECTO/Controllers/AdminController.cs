@@ -15,6 +15,7 @@ namespace PROYECTO.Controllers
     {
         PICTOCAMEntities1 db = new PICTOCAMEntities1();
         // GET: Admin
+        //Pagina principal administrativa
         public ActionResult Index()
         {
             if (Session["UserName"] != null)
@@ -23,6 +24,7 @@ namespace PROYECTO.Controllers
             }
             return Redirect("/Admin/Login");
         }
+        //Cerrar sesión
         public ActionResult Salir()
         {
             Session.Remove("UserName");
