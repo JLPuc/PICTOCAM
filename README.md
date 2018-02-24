@@ -1,0 +1,2 @@
+# PICTOCAM
+Aplicación para pictograma
