@@ -1,0 +1,214 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Panel Administrativo</title>
+    <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="~/Resources/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="~/Resources/plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="~/Resources/plugins/animate-css/animate.css" rel="stylesheet" />
+    <!-- Morris Chart Css-->
+    <link href="~/Resources/plugins/morrisjs/morris.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="~/Resources/css/style.css" rel="stylesheet" />
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="~/Resources/css/themes/all-themes.css" rel="stylesheet" />
+    
+
+
+</head>
+<body class="theme-blue-grey">
+
+    <div class="overlay"></div>
+    <!-- Top Bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+                <a href="javascript:void(0);" class="bars"></a>
+                <a class="navbar-brand" href="../../index.html">CENTRO DE ATENCIÓN MULTIPLE DEL SUR</a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+            </div>
+        </div>
+    </nav>
+    <!-- #Top Bar -->
+
+    <section>
+        <!-- Left Sidebar -->
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info">
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Session["UserName"].ToString()</div>
+                    
+                    <div class="btn-group user-helper-dropdown">
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="@Url.Action("Index", "Home", new { user = Session["UserName"].ToString()})"><i class="material-icons">home</i>Pagina Principal</a></li>
+                            <li role="seperator" class="divider"></li>
+                            <li><a href="@Url.Action("Salir", "Admin", new { user = Session["UserName"].ToString()})"><i class="material-icons">input</i>Salir</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu">
+                <ul class="list">
+                    <li class="header">Menu Principal</li>
+                    <li>
+                        <a href="@Url.Action("Noticias", "Admin")">
+                            <i class="material-icons">assignment</i>
+                            <span>Noticias</span>
+                        </a>
+                       
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Tips", "Admin")">
+                            <i class="material-icons">lightbulb_outline</i>
+                            <span>Tips</span>
+                        </a>  
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Menu", "Admin")">
+                            <i class="material-icons">restaurant</i>
+                            <span>Menú de la Semana</span>
+                        </a>
+                    <li>
+                        <a href="@Url.Action("Maestros", "Admin")">
+                            <i class="material-icons">school</i>
+                            <span>Maestros</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("MaestrosAdd", "Admin")">
+                            <i class="material-icons">school</i>
+                            <span>Agregar Maestros</span>
+                        </a>
+                    </li>
+                       
+                    
+                    <li>
+                        <a href="@Url.Action("Escuela", "Admin")" >
+                            <i class="material-icons">school</i>
+                            <span>Datos de la escuela</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="menu-toggle">
+                            <i class="material-icons">photo</i>
+                            <span>Pictogramas</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a>
+                                    <i class="material-icons">photo</i>
+                                    <span>Pictogramas</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="material-icons">add_circle_outline</i>
+                                    <span>Nuevo Pictograma</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="material-icons">autorenew</i>
+                                    <span>Editar Pictograma</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <i class="material-icons">delete</i>
+                                    <span>Eliminar Pictograma</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- #END Menu -->
+            @*<div class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav"></ul>
+                        </div>
+                    </div>
+                </div>*@
+
+            <!-- Footer -->
+            <div class="legal">
+                <div class="copyright">
+                    &copy; @DateTime.Now.Year <b>Centro de Atención Múltiple del Sur</b>.
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+        <!-- #END# Left Sidebar -->
+    </section>
+
+
+
+    <section class="content">
+        <div class="container-fluid">
+            @RenderBody()
+
+        </div>
+    </section>
+
+    <!-- Jquery Core Js -->
+    <script src="~/Resources/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="~/Resources/plugins/bootstrap/js/bootstrap.js"></script>
+    <!-- Select Plugin Js -->
+    <script src="~/Resources/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+    <!-- Slimscroll Plugin Js -->
+    <script src="~/Resources/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="~/Resources/plugins/node-waves/waves.js"></script>
+    <!-- Jquery CountTo Plugin Js -->
+    <script src="~/Resources/plugins/jquery-countto/jquery.countTo.js"></script>
+    <!-- Morris Plugin Js -->
+    <script src="~/Resources/plugins/raphael/raphael.min.js"></script>
+    <script src="~/Resources/plugins/morrisjs/morris.js"></script>
+    <!-- ChartJs -->
+    <script src="~/Resources/plugins/chartjs/Chart.bundle.js"></script>
+    <!-- Flot Charts Plugin Js -->
+    <script src="~/Resources/plugins/flot-charts/jquery.flot.js"></script>
+    <script src="~/Resources/plugins/flot-charts/jquery.flot.resize.js"></script>
+    <script src="~/Resources/plugins/flot-charts/jquery.flot.pie.js"></script>
+    <script src="~/Resources/plugins/flot-charts/jquery.flot.categories.js"></script>
+    <script src="~/Resources/plugins/flot-charts/jquery.flot.time.js"></script>
+    <!-- Sparkline Chart Plugin Js -->
+    <script src="~/Resources/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+    <!-- Custom Js -->
+    <script src="~/Resources/js/admin.js"></script>
+    <script src="~/Resources/js/pages/index.js"></script>
+    <!-- Demo Js -->
+    <script src="~/Resources/js/demo.js"></script>
+    <!-- Validation Plugin Js -->
+    <script src="~/Resources/plugins/jquery-validation/jquery.validate.js"></script>
+    
+
+</body>
+</html>

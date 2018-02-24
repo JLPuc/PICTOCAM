@@ -1,0 +1,106 @@
+﻿@model PROYECTO.Models.MENU
+
+@{
+    ViewBag.Title = "MenuAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<!-- DatetimePicker -->
+<link href="~/Resources/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet" />
+
+@using (Html.BeginForm("MenuAdd", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row clearfix">
+        <div class="container col-md-12">
+            <div class="card">
+
+                <div>
+
+                    <div class="error-message">
+                        @ViewBag.Mensaje
+                    </div>
+
+                    <div class="header">
+                        <h1>Editar Menu</h1>
+                    </div>
+
+                    <div class="body">
+                        
+                        <i class="separator"></i>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Lunes</h3>
+                                @Html.TextBoxFor(model => model.LUNES, new { @class = "form-control", @placeholder = "Menú del lunes" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Martes</h3>
+                                @Html.TextBoxFor(model => model.MARTES, new { @class = "form-control no-resize", @placeholder = "Menú del martes" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Miércoles</h3>
+                                @Html.TextBoxFor(model => model.MIERCOLES, new { @class = "form-control no-resize", @placeholder = "Menú del miércoles" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Jueves</h3>
+                                @Html.TextBoxFor(model => model.JUEVES, new { @class = "form-control no-resize", @placeholder = "Menú del jueves" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Viernes</h3>
+                                @Html.TextBoxFor(model => model.VIERNES, new { @class = "form-control no-resize", @placeholder = "Menú del viernes" })
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <h3>Fecha de la primera comida</h3>
+                                        @Html.TextBoxFor(model => model.FECHA_INI, new { @class = "date form-control", @placeholder = "Please chose a date...", @type = "date", @style = "font - family:Arial;" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <h3>Fecha de la última comida</h3>
+                                    <div class="form-line">
+                                        @Html.TextBoxFor(model => model.FECHA_FIN, new { @class = "date form-control", @placeholder = "Please chose a date...", @type = "date", @style = "font - family:Arial;" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+                    <div class="header">
+                        <div class="form-line">
+                            <center><input type="submit" class="btn-success btn btn-lg" onclick="NoticiasAdd()" role="button" value="Agregar" /></center>
+                        </div>
+
+                        <div class="btn btn-primary">
+                            <a href="@Url.Action("Index", "Admin")" style="text-decoration:none; color:white;">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Atrás</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    </div>
+}
+
+<!-- JavaScript para que funque en proyecto -->
+<script src="~/Resources/js/jquery.min.js"></script>
+<!-- DateTimePicker -->
+<script src="~/Resources/js/pages/forms/basic-form-elements.js"></script>
+

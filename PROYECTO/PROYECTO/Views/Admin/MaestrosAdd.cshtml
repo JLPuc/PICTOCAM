@@ -1,0 +1,104 @@
+﻿@model PROYECTO.Models.USUARIO
+
+@{
+    ViewBag.Title = "MaestrosAdd";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@* Previsualizar imagenes *@
+<script type="text/javascript">
+        function imagepreview(input) {
+            var fildr = new FileReader();
+            fildr.onload = function (e) {
+                $('#imgprw').attr('src', e.target.result);
+            }
+            fildr.readAsDataURL(input.files[0]);
+        }
+</script>
+
+@using (Html.BeginForm("MaestrosAdd", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row clearfix">
+        <div class="container col-md-12">
+            <div class="card">
+
+                <div>
+
+                    <div class="error-message">
+                        @ViewBag.Mensaje
+                    </div>
+
+                    <div class="header">
+                        <h1>Agrega un nuevo maestro</h1>
+                    </div>
+
+                    <div class="body">
+                        <div class="form-group">
+                            <h3>Imagen</h3>
+                            <input type="file" ID="file" name="file" onchange="imagepreview(this)" />
+                            <br />
+                            <center><img id="imgprw" src="~/Resources/images/imagen.png" alt="Image before upload" class="img-responsice img-thumbnail" height="400" /></center>
+                        </div>
+                        <i class="separator"></i>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Correo</h3>
+                                @Html.TextBoxFor(model => model.CORREO, new { @class = "form-control", @placeholder = "Correo del maestro" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Contraseña</h3>
+                                @Html.TextBoxFor(model => model.CONTRASEÑA, new { @class = "form-control no-resize", @rows = "6", @placeholder = "Contraseña del maestro" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Nombres</h3>
+                                @Html.TextBoxFor(model => model.NOMBRES, new { @class = "form-control no-resize", @rows = "12", @placeholder = "Nombre del maestro" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Apellido paterno</h3>
+                                @Html.TextBoxFor(model => model.APATERNO, new { @class = "form-control no-resize", @rows = "12", @placeholder = "Apellido paterno del maestro" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Apellido materno</h3>
+                                @Html.TextBoxFor(model => model.AMATERNO, new { @class = "form-control no-resize", @rows = "12", @placeholder = "Apellido materno del maestro" })
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="form-line">
+                                <h3>Telefono</h3>
+                                @Html.TextBoxFor(model => model.TELEFONO, new { @class = "form-control no-resize", @rows = "12", @placeholder = "Teléfono del maestro" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="header">
+                        <div class="form-line">
+                            <center><input type="submit" class="btn-success btn btn-lg" onclick="MaestrosAdd()" role="button" value="Agregar" /></center>
+                        </div>
+
+                        <div class="btn btn-primary">
+                            <a href="@Url.Action("Index", "Admin")" style="text-decoration:none; color:white;">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Atrás</span>
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <br />
+        </div>
+    </div>
+}
+<script src="~/Resources/js/pages/forms/basic-form-elements.js"></script>
+<!-- JavaScript para que funque en proyecto -->
+<
+

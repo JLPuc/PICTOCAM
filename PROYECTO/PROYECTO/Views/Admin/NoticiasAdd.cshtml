@@ -1,0 +1,84 @@
+﻿@model PROYECTO.Models.NOTICIAS
+@{
+    ViewBag.Title = "Agregar Noticias";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@* Previsualizar imagenes *@
+<script type="text/javascript">
+        function imagepreview(input) {
+            var fildr = new FileReader();
+            fildr.onload = function (e) {
+                $('#imgprw').attr('src', e.target.result);
+            }
+            fildr.readAsDataURL(input.files[0]);
+        }
+</script>
+
+@using (Html.BeginForm("NoticiasAdd", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="row clearfix">
+    <div class="container col-md-12">
+        <div class="card">
+             
+            <div>
+
+                <div class="error-message">
+                    @ViewBag.Mensaje
+                </div>
+
+                <div class="header">
+                    <h1>Generar una Nueva Noticia</h1>
+                </div>
+                
+                <div class="body">
+                    <div class="form-group">
+                        <h3>Imagen</h3>
+                        <input type="file" ID="file" name="file" onchange="imagepreview(this)" />
+                        <br />
+                        <center><img id="imgprw" src="~/Resources/images/imagen.png" alt="Image before upload" class="img-responsice img-thumbnail" height="400" /></center>
+                    </div>
+                    <i class="separator"></i>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Título</h3>
+                            @Html.TextBoxFor(model => model.TITULO, new { @class = "form-control", @placeholder = "Título de la Noticia" })
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Descripción</h3>
+                            @Html.TextAreaFor(model => model.DESCRIPCION, new { @class = "form-control no-resize", @rows = "6", @placeholder = "Descripción de la noticia" })
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Contenido</h3>
+                            @Html.TextAreaFor(model => model.CONTENIDO, new { @class = "form-control no-resize", @rows = "12", @placeholder = "Contenido de la noticia" })
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="header">
+                    <div class="form-line">
+                        <center><input type="submit" class="btn-success btn btn-lg" onclick="NoticiasAdd()" role="button" value="Agregar" /></center>
+                    </div>
+
+                    <div class="btn btn-primary">
+                        <a href="@Url.Action("Index", "Admin")" style="text-decoration:none; color:white;">
+                            <i class="material-icons">arrow_back</i>
+                            <span>Atrás</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+             
+        </div>
+        <br />
+    </div>
+</div>
+}
+<script src="~/Resources/js/pages/forms/basic-form-elements.js"></script>
+    <!-- JavaScript para que funque en proyecto -->
+<script src="~/Resources/js/jquery.min.js"></script>

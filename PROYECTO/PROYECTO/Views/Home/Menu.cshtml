@@ -1,0 +1,98 @@
+﻿@model IEnumerable<PROYECTO.Models.MENU>
+@{
+    Layout = "~/Views/Shared/LayoutF.cshtml";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+<link href="~/ResourcesF/css/jquery-ui.theme.css" rel="stylesheet" />
+<link href="~/ResourcesF/css/jquery-ui.structure.css" rel="stylesheet" />
+
+
+<!--------start-blog----------->
+<div class="blog">  
+    <div class="main">
+        <div class="wrap">
+            <div class="single-top">
+                <div class="wrapper_single">
+                    <div class="wrapper_top">
+                        <div class="content span_2_of_single">
+                            <h5 class="blog_title" style="font-size:20px;">Menú de la Semana</h5>
+                            <div class="col-md-12">
+                                @foreach (var item in Model)
+                                {
+                                    <table class="table-responsive" style="width:100%;">
+                                        <tr>
+                                            <td>
+                                                Fecha de Inicio:
+                                                <h5>@Convert.ToString(string.Format("{0:dd MMMM yyyy}", item.FECHA_INI))</h5></td>
+                                            <td>
+                                                Fecha Fin:
+                                                <h5>@Convert.ToString(string.Format("{0:dd MMMM yyyy}", item.FECHA_FIN))</h5>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                }
+                            </div>
+                            <div class="clear"></div>
+                            <div class="content">
+                                <div>
+                                    <table class="table-responsive table-bordered" style="width: 100%;">
+                                        <tr>
+                                            <td class="bg-orange"><b>Lunes</b></td>
+                                            <td class="bg-light-blue"><b>Martes</b></td>
+                                            <td class="bg-purple"><b>Miércoles</b></td>
+                                            <td class="bg-amber"><b>Jueves</b></td>
+                                            <td class="bg-lime"><b>Viernes</b></td>
+                                        </tr>
+                                        <br />
+                                        <tr style="background-color:lightgray; color:black; height:100px;">
+                                            @foreach (var item in Model)
+                                            {
+                                                <td>@Html.DisplayFor(model => item.LUNES)</td>
+                                                <td>@Html.DisplayFor(model => item.MARTES)</td>
+                                                <td>@Html.DisplayFor(model => item.MIERCOLES)</td>
+                                                <td>@Html.DisplayFor(model => item.JUEVES)</td>
+                                                <td>@Html.DisplayFor(model => item.VIERNES)</td>
+                                            }
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="rsidebar span_1_of_3">
+                    <div class="social_2">
+                        <h4>Calendario</h4>
+                        <div>
+                            <div id="datepicker"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------//end-blog_inner----------->
+
+<div>
+    <div id="datepicker"></div>
+</div>
+
+<script>
+    $("#datepicker").datepicker({
+        firstDay: 7,
+        onSelect: function (date) {
+            var fecha = moment(date);
+            fecha = fecha.format('MM/DD/YYYY 00:00:00')
+            $("#fecha").html(fecha);
+            var url = '@Url.Action("Menu", "Home", new { fecha = "date"})'.replace("date", encodeURIComponent(fecha));
+            window.location.href = url;
+        }
+    });
+</script>
