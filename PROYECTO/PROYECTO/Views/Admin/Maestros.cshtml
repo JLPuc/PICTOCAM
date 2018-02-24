@@ -1,0 +1,63 @@
+﻿@model IEnumerable<PROYECTO.Models.USUARIO>
+
+@{
+    ViewBag.Title = "Maestros";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>Maestros</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CONTRASEÑA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRES)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.APATERNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AMATERNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IMAGEN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TELEFONO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPUSU.NOMBRE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CONTRASEÑA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOMBRES)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APATERNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AMATERNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IMAGEN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TELEFONO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPUSU.NOMBRE)
+        </td>
+       
+    </tr>
+}
+
+</table>

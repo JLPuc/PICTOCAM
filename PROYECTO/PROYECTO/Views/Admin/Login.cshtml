@@ -1,0 +1,86 @@
+﻿@model PROYECTO.Models.USUARIO
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin - Login</title>
+    <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- Bootstrap Core Css -->
+    <link href="~/Resources/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <!-- Waves Effect Css -->
+    <link href="~/Resources/plugins/node-waves/waves.css" rel="stylesheet" />
+    <!-- Animation Css -->
+    <link href="~/Resources/plugins/animate-css/animate.css" rel="stylesheet" />
+    <!-- Custom Css -->
+    <link href="~/Resources/css/style.css" rel="stylesheet" />
+
+</head>
+<body class="login-page">
+    <div class="login-box">
+        <div class="logo">
+            <a><b>Adimistrador</b></a>
+            <small>Centro de Atención Múltiple del Sur</small>
+        </div>
+        <div class="card">
+            <div class="body">
+                <form id="sign_in" method="post">
+                    <div class="msg">Inicia Sesión</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            @Html.TextBoxFor(model => model.CORREO, new { @class = "form-control", @placeholder = "Nombre de Usuario", @id = "txtuserid" })
+                            <div class="login" style="height: 20px;">
+                                @Html.ValidationMessageFor(model => model.CORREO)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            @Html.PasswordFor(model => model.CONTRASEÑA, new { @class = "form-control", @placeholder = "Contraseña", @id = "txtpassword" })
+                            <div class="login" style="height:20px">
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label style="color:red">@ViewBag.MensajeError</label>
+                        <button class="btn btn-block bg-green waves-effect" type="submit" value="Login" id="btnlogin" onclick="javascript:Login();">Iniciar Sesión </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Jquery Core Js -->
+    <script src="~/Resources/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core Js -->
+    <script src="~/Resources/plugins/node-waves/waves.js"></script>
+    <!-- Waves Effect Plugin Js -->
+    <script src="~/Resources/plugins/node-waves/waves.js"></script>
+    <!-- Validation Plugin Js -->
+    <script src="~/Resources/plugins/jquery-validation/jquery.validate.js"></script>
+    <!-- Custom Js -->
+    <script src="~/Resources/js/admin.js"></script>
+    <script src="~/Resources/js/pages/examples/sign-in.js"></script>
+
+    <script src="../../Scripts/jquery.js" type="text/javascript"></script>
+
+</body>
+</html>

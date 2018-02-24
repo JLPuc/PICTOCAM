@@ -1,0 +1,64 @@
+﻿@model PROYECTO.Models.NOTICIAS
+@{
+    ViewBag.Title = "NoticiasDel";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+
+<div class="row clearfix">
+    <div class="container col-md-12">
+        <div class="card">
+
+            <div>
+                <div class="header">
+                    <h1>Eliminar Noticia</h1>
+                </div>
+
+                <div class="body">
+                    <div class="form-group">
+                        <h3>Imagen</h3>
+                        @Html.DisplayFor(model => model.IMAGEN)
+                    </div>
+                    <i class="separator"></i>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Descripción</h3>
+                            @Html.DisplayFor(model => model.DESCRIPCION)
+                        </div>
+                    </div>
+                    <i class="separator"></i>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Hora de Entrada</h3>
+                            @Html.DisplayFor(model => model.HORA)
+                        </div>
+                    </div>
+                    <i class="separator"></i>
+                    <div class="input-group">
+                        <div class="form-line">
+                            <h3>Fecha de Entrada</h3>
+                            @Html.DisplayFor(model => model.FECHA)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="header">
+                    <div class="form-line">
+                        <center><input type="submit" class="btn-success btn btn-lg" onclick="NoticiasDel()" value="Eliminar" /></center>
+                    </div>
+
+                    <div class="btn btn-primary">
+                        <a href="@Url.Action("Index", "Admin")" style="text-decoration:none; color:white;">
+                            <i class="material-icons">arrow_back</i>
+                            <span>Atrás</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <br />
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8b233b9a3d294b2eb7c86e8c17d4031f" Name="Diagram1">
+        <EntityTypeShape EntityType="PICTOCAMModel.ALUMNO" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.ESCUELA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.GRUPO" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.MENU" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.NOTICIAS" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.PALABRA_IMAGEN" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.PICTOGRAMA" Width="1.5" PointX="5.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.TIPS" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.TIPUSU" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PICTOCAMModel.USUARIO" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="PICTOCAMModel.FK_ALUMNO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_GRUPO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_MENU_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_PICTO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_PICTOGRAMA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_REF_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_TIPS_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_TIPOU" ManuallyRouted="false" />
+        <AssociationConnector Association="PICTOCAMModel.FK_ESCUELA_USUARIO" />
+        <AssociationConnector Association="PICTOCAMModel.FK_NOTICIAS_USUARIO" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

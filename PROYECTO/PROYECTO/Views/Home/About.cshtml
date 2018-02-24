@@ -1,0 +1,103 @@
+﻿@model List<PROYECTO.Models.ESCUELA>
+
+@{
+    Layout = "~/Views/Shared/LayoutF.cshtml";
+}
+
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css" />
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyBN5HQEgifKCN5mq9cqkHQ7biWnKGusKok"></script>
+<script src="~/Resources/js/locationpicker.jquery.js"></script>
+
+
+<!--------start-blog----------->
+@using (Html.BeginForm())
+{
+
+<div class="blog">
+    <div class="main">
+        <div class="wrap">
+@foreach (var item in Model)
+{
+            <div class="single-top">
+                <div class="wrapper_single">
+                    <div class="wrapper_top">
+                        <div class="content span_2_of_single">
+                            <h5 class="blog_title"><a href="bloginner.html">Acerca de la Escuela</a></h5>
+                            <div class="content">
+                                <div>
+                                    <img class="img-responsive" src="@Html.DisplayFor(modelItem => item.IMAGEN)" alt="" />
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="para para_2">
+                                <h5 class="blog_title">HISTORIA</h5>
+                                <p>@Html.DisplayFor(modelItem => item.HISTORIA)</p>
+                            </div>
+                            <div class="clear"> </div>
+                            <div class="para para_2">
+                                <h5 class="blog_title">VISIÓN</h5>
+                                <p> @Html.DisplayFor(modelItem => item.VISION)</p>
+                            </div>
+                            <div class="para para_2">
+                                <h5 class="blog_title">MISION</h5>
+                                <p>@Html.DisplayFor(modelItem => item.MISION)</p>
+                            </div>
+                            <br />
+                            <!-- Maps de Google -->
+                            <div class="para para_2">
+                                <p>CONOCE NUESTRA UBICACIÓN</p>
+                                <p>@Html.DisplayFor(modelItem => item.DIRECCION)</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <div id="ModalMapPreview" style="width:100%; height: 400px;"></div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <input type="text" id="txtLat" value="20.9416701" class="control-label" style="visibility:hidden">
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" id="txtLgt" value="-89.6134697" class="control-label" style="visibility:hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="button">
+                                <a href="@Url.Action("ubicacion", "Home")" style="font-size:25px;">Como llegar...</a>
+                            </div>
+
+                            <!-- Termina Google Maps -->
+                        </div>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+}
+        </div>
+    </div>
+</div>
+        
+    }
+
+<script>
+        $("#ModalMapPreview").locationpicker({
+            radius: 0,
+            location: {
+                longitude: $("#txtLgt").val(),
+                latitude: $("#txtLat").val()
+            },
+            inputBinding: {
+                latitudeInput: $("#txtLat"),
+                longitudeInput: $("#txtLgt")
+            },
+            enableAutocomplete: true
+        });
+</script>
+
+<!--------//end-blog_inner----------->
+

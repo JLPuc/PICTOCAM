@@ -1,0 +1,131 @@
+﻿
+@{ 
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Centro de Atención Múltiple del Sur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
+    <link href="~/ResourcesF/css/style.css" rel="stylesheet" />
+    <link href="~/ResourcesF/css/Tablas.css" rel="stylesheet" />
+
+    <link href="~/ResourcesF/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/ResourcesF/css/magnific-popup.css" rel="stylesheet" />
+    <script src="~/ResourcesF/js/jquery.min.js"></script>
+    
+    <!-----768px-menu----->
+    <link href="~/ResourcesF/css/jquery.mmenu.all.css" rel="stylesheet" />
+    <script src="~/ResourcesF/js/jquery.mmenu.js"></script>
+    <script type="text/javascript">
+				//	The menu on the left
+				$(function() {
+					$('nav#menu-left').mmenu();
+				});
+    </script>
+    <!-----//768px-menu----->
+</head>
+<body>
+
+    <!---scrips facebook comments-->
+    <div id="fb-root"></div>
+    <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+    <!-- start header -->
+    <div class="header_bg">
+        <div class="wrap">
+            <div class="header">
+                <div class="logo">
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="images/lg.png" alt="" />
+                        <h1>CAM</h1>
+                        <div class="clear"> </div>
+                    </a>
+                </div>
+                <div class="text">
+                    <p style="font-size:20px;">Centro de Atención Múltiple del Sur</p>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- start header -->
+    <div class="header_btm">
+        <div class="wrap">
+            <!------start-768px-menu---->
+            <div id="page">
+                <div id="header">
+                    <a class="navicon" href="#menu-left"> </a>
+                </div>
+                <nav id="menu-left">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li><a href="@Url.Action("Noticias", "Home")">Noticias</a></li>
+                        <li><a href="@Url.Action("Tips", "Home")">Consejos</a></li>
+                        <li><a href="@Url.Action("Menu", "Home", new { fecha = DateTime.Now.Date})">Menú</a></li>
+                        <li><a href="@Url.Action("About", "Home")">Acerca</a></li>
+                        @if (Session["UserName"] != null)
+                        {
+                            <li><a href="@Url.Action("Index", "Admin")">Regresar al Administrador</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("Login", "Admin")">Administrador</a></li>
+                        }
+
+                    </ul>
+                </nav>
+            </div>
+            <!------start-768px-menu---->
+            <div class="header_sub">
+                <div class="h_menu">
+                    <ul>
+                        <li><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+                        <li><a href="@Url.Action("Noticias", "Home")">Noticias</a></li>
+                        <li><a href="@Url.Action("Tips", "Home")">Consejos</a></li>
+                        <li><a href="@Url.Action("Menu", "Home", new { fecha = DateTime.Now.Date})">Menú</a></li>
+                        <li><a href="@Url.Action("About", "Home")">Acerca</a></li>
+                        @if (Session["UserName"] != null)
+                        {
+                            <li><a href="@Url.Action("Index", "Admin")">Regresar al Administrador</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("Login", "Admin")">Administrador</a></li>
+                        }
+                    </ul>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <div class="footer">
+        <div class="wrap">
+            <div class="footer-left">
+                <h3>Facebook</h3>
+                <div class="fb-comments" data-href="localhost:54423" data-numposts="5"></div>
+            </div>
+            
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <div class="copy">
+        <p>&copy; @DateTime.Now.Year <b>Centro de Atención Múltiple del Sur</b>.</p>
+    </div>
+</body>
+</html>
