@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PICTOCAMModelStoreContainer" CdmEntityContainer="PICTOCAMEntities1">
+    <EntitySetMapping Name="ALUMNO">
+      <EntityTypeMapping TypeName="PICTOCAMModel.ALUMNO">
+        <MappingFragment StoreEntitySet="ALUMNO">
+          <ScalarProperty Name="IDALUMNO" ColumnName="IDALUMNO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDOPATERNO" ColumnName="APELLIDOPATERNO" />
+          <ScalarProperty Name="APELLIDOMATERNO" ColumnName="APELLIDOMATERNO" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ESCUELA">
+      <EntityTypeMapping TypeName="PICTOCAMModel.ESCUELA">
+        <MappingFragment StoreEntitySet="ESCUELA">
+          <ScalarProperty Name="CLAVESC" ColumnName="CLAVESC" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="VISION" ColumnName="VISION" />
+          <ScalarProperty Name="MISION" ColumnName="MISION" />
+          <ScalarProperty Name="HISTORIA" ColumnName="HISTORIA" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+          <ScalarProperty Name="ID_E" ColumnName="ID_E" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GRUPO">
+      <EntityTypeMapping TypeName="PICTOCAMModel.GRUPO">
+        <MappingFragment StoreEntitySet="GRUPO">
+          <ScalarProperty Name="IDGRUPO" ColumnName="IDGRUPO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MENU">
+      <EntityTypeMapping TypeName="PICTOCAMModel.MENU">
+        <MappingFragment StoreEntitySet="MENU">
+          <ScalarProperty Name="ID_M" ColumnName="ID_M" />
+          <ScalarProperty Name="LUNES" ColumnName="LUNES" />
+          <ScalarProperty Name="MARTES" ColumnName="MARTES" />
+          <ScalarProperty Name="MIERCOLES" ColumnName="MIERCOLES" />
+          <ScalarProperty Name="JUEVES" ColumnName="JUEVES" />
+          <ScalarProperty Name="VIERNES" ColumnName="VIERNES" />
+          <ScalarProperty Name="FECHA_INI" ColumnName="FECHA_INI" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTICIAS">
+      <EntityTypeMapping TypeName="PICTOCAMModel.NOTICIAS">
+        <MappingFragment StoreEntitySet="NOTICIAS">
+          <ScalarProperty Name="ID_N" ColumnName="ID_N" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+          <ScalarProperty Name="HORA" ColumnName="HORA" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PALABRA_IMAGEN">
+      <EntityTypeMapping TypeName="PICTOCAMModel.PALABRA_IMAGEN">
+        <MappingFragment StoreEntitySet="PALABRA_IMAGEN">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PALABRA" ColumnName="PALABRA" />
+          <ScalarProperty Name="SONIDO" ColumnName="SONIDO" />
+          <ScalarProperty Name="PICTO" ColumnName="PICTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PICTOGRAMA">
+      <EntityTypeMapping TypeName="PICTOCAMModel.PICTOGRAMA">
+        <MappingFragment StoreEntitySet="PICTOGRAMA">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RUTA" ColumnName="RUTA" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="REF" ColumnName="REF" />
+          <ScalarProperty Name="USUARIO1" ColumnName="USUARIO1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPS">
+      <EntityTypeMapping TypeName="PICTOCAMModel.TIPS">
+        <MappingFragment StoreEntitySet="TIPS">
+          <ScalarProperty Name="ID_T" ColumnName="ID_T" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="TITULO" ColumnName="TITULO" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="CONTENIDO" ColumnName="CONTENIDO" />
+          <ScalarProperty Name="HORA" ColumnName="HORA" />
+          <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+          <ScalarProperty Name="USER1" ColumnName="USER1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPUSU">
+      <EntityTypeMapping TypeName="PICTOCAMModel.TIPUSU">
+        <MappingFragment StoreEntitySet="TIPUSU">
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="PICTOCAMModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="CONTRASEÑA" ColumnName="CONTRASEÑA" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+          <ScalarProperty Name="APATERNO" ColumnName="APATERNO" />
+          <ScalarProperty Name="AMATERNO" ColumnName="AMATERNO" />
+          <ScalarProperty Name="IMAGEN" ColumnName="IMAGEN" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="TIPO_USUARIO" ColumnName="TIPO_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

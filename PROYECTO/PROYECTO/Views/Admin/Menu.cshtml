@@ -1,0 +1,68 @@
+﻿@model List<PROYECTO.Models.MENU>
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row clearfix">
+        <div class="card">
+            <div class="container-fluid">
+                <div>
+                    <div class="header">
+                        <h1>Menú</h1>
+                        <i class="separator"></i>
+                        <right><a href="@Url.Action("MenuAdd", "Admin")" class="btn btn-primary" style="float:right; width: 150px;">¡Agregar nuevo menú!</a></right>
+
+                    </div>
+                    <div class="body">
+                        <div class="col-md-12">
+                            <table class="table-bordered responsive-table" style="width:auto;">
+                                <tr>
+                                    <td class="bg-orange"><b>Lunes</b></td>
+                                    <td class="bg-light-blue"><b>Martes</b></td>
+                                    <td class="bg-purple"><b>Miércoles</b></td>
+                                    <td class="bg-amber"><b>Jueves</b></td>
+                                    <td class="bg-lime"><b>Viernes</b></td>
+                                    <td class="bg-blue"><b>Fecha de Inicio</b></td>
+                                    <td class="bg-red"><b>Fecha fin</b></td>
+                                    <td class="bg-blue-grey"><b>Acciones</b></td>
+                                </tr>
+                                @foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td style="background-color:lightgray; color:black;">@Html.DisplayFor(modelItem => item.LUNES)</td>
+                                        <td style="background-color:lightgray; color:black;">@Html.DisplayFor(modelItem => item.MARTES)</td>
+                                        <td style="background-color:lightgray; color:black;">@Html.DisplayFor(modelItem => item.MIERCOLES)</td>
+                                        <td style="background-color:lightgray; color:black;">@Html.DisplayFor(modelItem => item.JUEVES)</td>
+                                        <td style="background-color:lightgray; color:black;">@Html.DisplayFor(modelItem => item.VIERNES)</td>
+                                        <td style="background-color:lightgray; color:black;">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.FECHA_INI))</td>
+                                        <td style="background-color:lightgray; color:black;">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.FECHA_FIN))</td>
+                                        <td style="background-color:lightgray; color:black;">
+                                            <div>
+                                                <a href="@Url.Action("MenuUpdate","Admin", new { id = item.ID_M})" class="btn btn-primary" style="width: 100px;">Editar</a>
+                                            </div>
+                                            <div>
+                                                <a href="@Url.Action("EliminarMenu","Admin", new { id = item.ID_M})" class="btn btn-danger" style="width: 100px;">Eliminar</a>
+                                            </div>
+                                            <div>
+                                                <a href="@Url.Action("ExportReporte","Admin", new { id = item.ID_M})" class="btn btn-primary" style="width: 100px;">Imprimir</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
