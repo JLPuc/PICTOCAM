@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PROYECTO.Models.NOTICIAS>
+@{
+    ViewBag.Title = "Noticias";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="row clearfix">
+        <div class="card">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="header">
+                                    <h1>Noticias</h1>                  
+                                    <i class="separator"></i>
+                                    <right><a href="@Url.Action("NoticiasAdd", "Admin")" class="btn btn-primary"  style="float:right; width: 150px;">¡Agregar nueva noticia!</a></right>
+                         
+                    </div>
+                    <div class="body">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <img src="@Html.DisplayFor(modelItem => item.IMAGEN)" class="img-responsive thumbnail" width="500" />
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="title" style="text-align: justify; width:auto;"><h3>@Html.DisplayFor(modelItem => item.TITULO)</h3></div>
+                                    <div class="body-content text-justify" style="width:auto;">@Html.DisplayFor(modelItem => item.DESCRIPCION)</div>
+                                    <div class="col-md-12 form-line">
+                                        <br />
+                                        <div class="col-sm-5">
+                                            <a href="@Url.Action("NoticiasUpdate","Admin", new { id = item.ID_N})" class="btn btn-primary" style="width: 100px;">Editar</a>
+                                            
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <a href="@Url.Action("EliminarNoticia","Admin", new { id = item.ID_N})" class="btn btn-danger" style="width: 100px;">Eliminar</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

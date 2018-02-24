@@ -1,0 +1,45 @@
+﻿@model PROYECTO.Models.TIPS
+@{
+    Layout = "~/Views/Shared/LayoutF.cshtml";
+}
+
+<!--------start-blog----------->
+<div class="blog">
+    <div class="main">
+        <div class="wrap">
+            <div class="single-top">
+                <div class="wrapper_single">
+                    <div class="wrapper_top">
+                        <div class="grid_1 alpha">
+                            <div class="date">
+                                <span>
+                                    @Convert.ToString(string.Format("{0:dd MMM yy}", Model.FECHA))
+                                </span>
+                            </div>
+                        </div>
+                        <div class="content span_2_of_single">
+                            <h5 class="blog_title" style="font-size: 30px">@Html.DisplayFor(model => model.TITULO)</h5>
+                            <div class="content">
+                                <div>
+                                    <img class="img-responsive thumbnail" src="@Html.DisplayFor(model => model.IMAGEN)" alt="" />
+                                </div>
+                                <div class="clear"> </div>
+                            </div>
+                            <div class="para para_2">
+                                <p class="text-justify">@Html.DisplayFor(model => model.DESCRIPCION)</p>
+                            </div>
+                            <div class="para para_2">
+                                <p class="text-justify">@Html.DisplayFor(model => model.CONTENIDO)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="clear"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------//end-blog_inner----------->
+
+

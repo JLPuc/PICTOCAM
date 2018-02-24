@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PICTOCAMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="IDALUMNO" />
+    </Key>
+    <Property Name="IDALUMNO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDOPATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="APELLIDOMATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_ALUMNO_USUARIO" FromRole="ALUMNO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="ESCUELA">
+    <Key>
+      <PropertyRef Name="ID_E" />
+    </Key>
+    <Property Name="CLAVESC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VISION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MISION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HISTORIA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ID_E" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="USUARIO" Relationship="PICTOCAMModel.FK_ESCUELA_USUARIO" FromRole="ESCUELA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="GRUPO">
+    <Key>
+      <PropertyRef Name="IDGRUPO" />
+    </Key>
+    <Property Name="IDGRUPO" Type="Int32" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_GRUPO_USUARIO" FromRole="GRUPO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID_M" />
+    </Key>
+    <Property Name="ID_M" Type="Decimal" Precision="5" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LUNES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MARTES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="MIERCOLES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="JUEVES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="VIERNES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_INI" Type="DateTime" Precision="0" />
+    <Property Name="FECHA_FIN" Type="DateTime" Precision="0" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_MENU_USUARIO" FromRole="MENU" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="NOTICIAS">
+    <Key>
+      <PropertyRef Name="ID_N" />
+    </Key>
+    <Property Name="ID_N" Type="Decimal" Precision="5" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TITULO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTENIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HORA" Type="Time" Precision="7" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="PICTOCAMModel.FK_NOTICIAS_USUARIO" FromRole="NOTICIAS" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="PALABRA_IMAGEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="5" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PALABRA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SONIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PICTO" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+    <NavigationProperty Name="PICTOGRAMA" Relationship="Self.FK_PICTO" FromRole="PALABRA_IMAGEN" ToRole="PICTOGRAMA" />
+  </EntityType>
+  <EntityType Name="PICTOGRAMA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="5" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RUTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REF" Type="Decimal" Precision="5" Scale="0" />
+    <Property Name="USUARIO1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PALABRA_IMAGEN" Relationship="Self.FK_PICTO" FromRole="PICTOGRAMA" ToRole="PALABRA_IMAGEN" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_PICTOGRAMA_USUARIO" FromRole="PICTOGRAMA" ToRole="USUARIO" />
+    <NavigationProperty Name="PICTOGRAMA1" Relationship="Self.FK_REF_ID" FromRole="PICTOGRAMA" ToRole="PICTOGRAMA1" />
+    <NavigationProperty Name="PICTOGRAMA2" Relationship="Self.FK_REF_ID" FromRole="PICTOGRAMA1" ToRole="PICTOGRAMA" />
+  </EntityType>
+  <EntityType Name="TIPS">
+    <Key>
+      <PropertyRef Name="ID_T" />
+    </Key>
+    <Property Name="ID_T" Type="Decimal" Precision="5" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TITULO" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTENIDO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HORA" Type="Time" Precision="7" />
+    <Property Name="FECHA" Type="DateTime" Precision="0" />
+    <Property Name="USER1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_TIPS_USUARIO" FromRole="TIPS" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="TIPUSU">
+    <Key>
+      <PropertyRef Name="NOMBRE" />
+    </Key>
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_TIPOU" FromRole="TIPUSU" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="CORREO" />
+    </Key>
+    <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRES" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="AMATERNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IMAGEN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="TIPO_USUARIO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ALUMNO" Relationship="Self.FK_ALUMNO_USUARIO" FromRole="USUARIO" ToRole="ALUMNO" />
+    <NavigationProperty Name="GRUPO" Relationship="Self.FK_GRUPO_USUARIO" FromRole="USUARIO" ToRole="GRUPO" />
+    <NavigationProperty Name="MENU" Relationship="Self.FK_MENU_USUARIO" FromRole="USUARIO" ToRole="MENU" />
+    <NavigationProperty Name="PICTOGRAMA" Relationship="Self.FK_PICTOGRAMA_USUARIO" FromRole="USUARIO" ToRole="PICTOGRAMA" />
+    <NavigationProperty Name="TIPS" Relationship="Self.FK_TIPS_USUARIO" FromRole="USUARIO" ToRole="TIPS" />
+    <NavigationProperty Name="TIPUSU" Relationship="Self.FK_TIPOU" FromRole="USUARIO" ToRole="TIPUSU" />
+    <NavigationProperty Name="ESCUELA" Relationship="PICTOCAMModel.FK_ESCUELA_USUARIO" FromRole="USUARIO" ToRole="ESCUELA" />
+    <NavigationProperty Name="NOTICIAS" Relationship="PICTOCAMModel.FK_NOTICIAS_USUARIO" FromRole="USUARIO" ToRole="NOTICIAS" />
+  </EntityType>
+  <Association Name="FK_ALUMNO_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="ALUMNO">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPO_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="GRUPO">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MENU_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="MENU">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PICTO">
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="1" />
+    <End Role="PALABRA_IMAGEN" Type="Self.PALABRA_IMAGEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PICTOGRAMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PALABRA_IMAGEN">
+        <PropertyRef Name="PICTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PICTOGRAMA_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="PICTOGRAMA">
+        <PropertyRef Name="USUARIO1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REF_ID">
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="0..1" />
+    <End Role="PICTOGRAMA1" Type="Self.PICTOGRAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PICTOGRAMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PICTOGRAMA1">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPS_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="TIPS" Type="Self.TIPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="TIPS">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPOU">
+    <End Role="TIPUSU" Type="Self.TIPUSU" Multiplicity="0..1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPUSU">
+        <PropertyRef Name="NOMBRE" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="TIPO_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PICTOCAMEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" />
+    <EntitySet Name="ESCUELA" EntityType="Self.ESCUELA" />
+    <EntitySet Name="GRUPO" EntityType="Self.GRUPO" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" />
+    <EntitySet Name="NOTICIAS" EntityType="Self.NOTICIAS" />
+    <EntitySet Name="PALABRA_IMAGEN" EntityType="Self.PALABRA_IMAGEN" />
+    <EntitySet Name="PICTOGRAMA" EntityType="Self.PICTOGRAMA" />
+    <EntitySet Name="TIPS" EntityType="Self.TIPS" />
+    <EntitySet Name="TIPUSU" EntityType="Self.TIPUSU" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_ALUMNO_USUARIO" Association="Self.FK_ALUMNO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPO_USUARIO" Association="Self.FK_GRUPO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="GRUPO" EntitySet="GRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENU_USUARIO" Association="Self.FK_MENU_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="MENU" EntitySet="MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PICTO" Association="Self.FK_PICTO">
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+      <End Role="PALABRA_IMAGEN" EntitySet="PALABRA_IMAGEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PICTOGRAMA_USUARIO" Association="Self.FK_PICTOGRAMA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REF_ID" Association="Self.FK_REF_ID">
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+      <End Role="PICTOGRAMA1" EntitySet="PICTOGRAMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPS_USUARIO" Association="Self.FK_TIPS_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TIPS" EntitySet="TIPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPOU" Association="Self.FK_TIPOU">
+      <End Role="TIPUSU" EntitySet="TIPUSU" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESCUELA_USUARIO" Association="PICTOCAMModel.FK_ESCUELA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ESCUELA" EntitySet="ESCUELA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTICIAS_USUARIO" Association="PICTOCAMModel.FK_NOTICIAS_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_ESCUELA_USUARIO">
+    <End Type="PICTOCAMModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+    <End Type="PICTOCAMModel.ESCUELA" Role="ESCUELA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="ESCUELA">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTICIAS_USUARIO">
+    <End Type="PICTOCAMModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+    <End Type="PICTOCAMModel.NOTICIAS" Role="NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

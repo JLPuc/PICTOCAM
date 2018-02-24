@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PICTOCAMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALUMNO">
+    <Key>
+      <PropertyRef Name="IDALUMNO" />
+    </Key>
+    <Property Name="IDALUMNO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" />
+    <Property Name="APELLIDOPATERNO" Type="varchar(max)" />
+    <Property Name="APELLIDOMATERNO" Type="varchar(max)" />
+    <Property Name="TELEFONO" Type="varchar(max)" />
+    <Property Name="IMAGEN" Type="varchar(max)" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="ESCUELA">
+    <Key>
+      <PropertyRef Name="ID_E" />
+    </Key>
+    <Property Name="CLAVESC" Type="varchar" MaxLength="100" />
+    <Property Name="IMAGEN" Type="varchar(max)" />
+    <Property Name="DIRECCION" Type="varchar(max)" />
+    <Property Name="VISION" Type="varchar(max)" />
+    <Property Name="MISION" Type="varchar(max)" />
+    <Property Name="HISTORIA" Type="varchar(max)" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+    <Property Name="ID_E" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GRUPO">
+    <Key>
+      <PropertyRef Name="IDGRUPO" />
+    </Key>
+    <Property Name="IDGRUPO" Type="int" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MENU">
+    <Key>
+      <PropertyRef Name="ID_M" />
+    </Key>
+    <Property Name="ID_M" Type="numeric" Precision="5" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LUNES" Type="varchar(max)" />
+    <Property Name="MARTES" Type="varchar(max)" />
+    <Property Name="MIERCOLES" Type="varchar(max)" />
+    <Property Name="JUEVES" Type="varchar(max)" />
+    <Property Name="VIERNES" Type="varchar(max)" />
+    <Property Name="FECHA_INI" Type="date" />
+    <Property Name="FECHA_FIN" Type="date" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="NOTICIAS">
+    <Key>
+      <PropertyRef Name="ID_N" />
+    </Key>
+    <Property Name="ID_N" Type="numeric" Precision="5" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IMAGEN" Type="varchar(max)" />
+    <Property Name="TITULO" Type="varchar(max)" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" Nullable="false" />
+    <Property Name="CONTENIDO" Type="varchar(max)" />
+    <Property Name="HORA" Type="time" Precision="7" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PALABRA_IMAGEN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="5" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PALABRA" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="SONIDO" Type="varchar(max)" Nullable="false" />
+    <Property Name="PICTO" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PICTOGRAMA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="numeric" Precision="5" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RUTA" Type="varchar(max)" Nullable="false" />
+    <Property Name="NOMBRE" Type="varchar(max)" Nullable="false" />
+    <Property Name="REF" Type="numeric" Precision="5" Scale="0" />
+    <Property Name="USUARIO1" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPS">
+    <Key>
+      <PropertyRef Name="ID_T" />
+    </Key>
+    <Property Name="ID_T" Type="numeric" Precision="5" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IMAGEN" Type="varchar(max)" />
+    <Property Name="TITULO" Type="varchar" MaxLength="200" />
+    <Property Name="DESCRIPCION" Type="varchar(max)" Nullable="false" />
+    <Property Name="CONTENIDO" Type="varchar(max)" />
+    <Property Name="HORA" Type="time" Precision="7" />
+    <Property Name="FECHA" Type="date" />
+    <Property Name="USER1" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TIPUSU">
+    <Key>
+      <PropertyRef Name="NOMBRE" />
+    </Key>
+    <Property Name="NOMBRE" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="CORREO" />
+    </Key>
+    <Property Name="CORREO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CONTRASEÑA" Type="varchar(max)" Nullable="false" />
+    <Property Name="NOMBRES" Type="varchar(max)" Nullable="false" />
+    <Property Name="APATERNO" Type="varchar(max)" />
+    <Property Name="AMATERNO" Type="varchar(max)" />
+    <Property Name="IMAGEN" Type="varchar(max)" />
+    <Property Name="TELEFONO" Type="numeric" Precision="10" Scale="0" />
+    <Property Name="TIPO_USUARIO" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_ALUMNO_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="ALUMNO" Type="Self.ALUMNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="ALUMNO">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ESCUELA_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="ESCUELA" Type="Self.ESCUELA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="ESCUELA">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GRUPO_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="GRUPO" Type="Self.GRUPO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="GRUPO">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MENU_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="MENU" Type="Self.MENU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="MENU">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NOTICIAS_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="NOTICIAS" Type="Self.NOTICIAS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="NOTICIAS">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PICTO">
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="1" />
+    <End Role="PALABRA_IMAGEN" Type="Self.PALABRA_IMAGEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PICTOGRAMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PALABRA_IMAGEN">
+        <PropertyRef Name="PICTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PICTOGRAMA_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="PICTOGRAMA">
+        <PropertyRef Name="USUARIO1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REF_ID">
+    <End Role="PICTOGRAMA" Type="Self.PICTOGRAMA" Multiplicity="0..1" />
+    <End Role="PICTOGRAMA1" Type="Self.PICTOGRAMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PICTOGRAMA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PICTOGRAMA1">
+        <PropertyRef Name="REF" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPOU">
+    <End Role="TIPUSU" Type="Self.TIPUSU" Multiplicity="0..1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPUSU">
+        <PropertyRef Name="NOMBRE" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="TIPO_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TIPS_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="TIPS" Type="Self.TIPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CORREO" />
+      </Principal>
+      <Dependent Role="TIPS">
+        <PropertyRef Name="USER1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PICTOCAMModelStoreContainer">
+    <EntitySet Name="ALUMNO" EntityType="Self.ALUMNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ESCUELA" EntityType="Self.ESCUELA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GRUPO" EntityType="Self.GRUPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MENU" EntityType="Self.MENU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTICIAS" EntityType="Self.NOTICIAS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PALABRA_IMAGEN" EntityType="Self.PALABRA_IMAGEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PICTOGRAMA" EntityType="Self.PICTOGRAMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPS" EntityType="Self.TIPS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPUSU" EntityType="Self.TIPUSU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ALUMNO_USUARIO" Association="Self.FK_ALUMNO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ALUMNO" EntitySet="ALUMNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ESCUELA_USUARIO" Association="Self.FK_ESCUELA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ESCUELA" EntitySet="ESCUELA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GRUPO_USUARIO" Association="Self.FK_GRUPO_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="GRUPO" EntitySet="GRUPO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MENU_USUARIO" Association="Self.FK_MENU_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="MENU" EntitySet="MENU" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NOTICIAS_USUARIO" Association="Self.FK_NOTICIAS_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="NOTICIAS" EntitySet="NOTICIAS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PICTO" Association="Self.FK_PICTO">
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+      <End Role="PALABRA_IMAGEN" EntitySet="PALABRA_IMAGEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PICTOGRAMA_USUARIO" Association="Self.FK_PICTOGRAMA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REF_ID" Association="Self.FK_REF_ID">
+      <End Role="PICTOGRAMA" EntitySet="PICTOGRAMA" />
+      <End Role="PICTOGRAMA1" EntitySet="PICTOGRAMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPOU" Association="Self.FK_TIPOU">
+      <End Role="TIPUSU" EntitySet="TIPUSU" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TIPS_USUARIO" Association="Self.FK_TIPS_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TIPS" EntitySet="TIPS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

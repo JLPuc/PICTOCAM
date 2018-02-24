@@ -1,0 +1,65 @@
+﻿@model PROYECTO.Models.TIPS
+
+@{
+    ViewBag.Title = "TipsEdit";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using (Html.BeginForm("TipsEdit", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row clearfix">
+        <div class="container col-md-12">
+            <div class="card">
+                <div>
+                    <div class="header">
+                        <h1><b>Editar</b></h1>
+                    </div>
+                    <div class="body">
+                        @Html.HiddenFor(model => model.ID_T)
+                        <div class="form-group">
+                            <img src="@Html.DisplayFor(model => model.IMAGEN)" class="img-responsive thumbnail" />
+                            @Html.EditorFor(model => model.IMAGEN, new { htmlAttributes = new { @class = "form-control", @style = "visibility: hidden;" } })
+                        </div>
+                        <div class="form-group">
+                            <h3><b>Título</b></h3>
+                            @Html.TextBoxFor(model => model.TITULO, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <h3><b>Descripción</b></h3>
+                            @Html.TextAreaFor(model => model.DESCRIPCION, new { @class = "form-control no-resize", @rows = "6" })
+                        </div>
+                        <div class="form-group">
+                            <h3><b>Descripción</b></h3>
+                            @Html.TextAreaFor(model => model.CONTENIDO, new { @class = "form-control no-resize", @rows = "12" })
+                        </div>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <center><input type="submit" value="Save" class="btn btn-lg bg-indigo" /></center>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="btn btn-primary">
+                            <a href="@Url.Action("Tips", "Admin")" style="text-decoration:none; color:white;">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Atrás</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+} 
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@
+
+
+
+
