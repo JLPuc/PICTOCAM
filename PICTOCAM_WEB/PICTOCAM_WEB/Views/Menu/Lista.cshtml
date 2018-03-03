@@ -1,0 +1,213 @@
+﻿
+@{
+    Layout = "~/Views/Shared/layoutA.cshtml";
+}
+
+<div class="page-title">
+    <div class="col-md-11">
+        <h3>Eventos</h3>
+    </div>
+
+    <button class="btn btn-instagram" style="color:white; background-color:#4E5E6A;" data-toggle="modal" data-target="#addMenu">Agregar</button>
+
+</div>
+
+<!--Modal para agregar-->
+<div class="modal fade bs-example-modal-lg" id="addMenu" tabindex="-1" role="dialog" aria-labelledby="titleMenu" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="Evento">Crear Menú</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">Lunes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del lunes" id="lunes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Martes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del martes" id="martes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Miércoles</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del miércoles" id="miercoles"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jueves</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del jueves" id="jueves"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Viernes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del viernes" id="viernes"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Fecha Inicio</label>
+                            <input type="date" class="datepicker" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Fecha fin</label>
+                            <input type="date" class="datepicker" />
+
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <br />
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn" style="background-color: #4E5E6A; color:white;">Guardar</button>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de modal para agregar-->
+
+<!--Model para editar-->
+<div class="modal fade bs-example-modal-lg" id="editMenu" tabindex="-1" role="dialog" aria-labelledby="titleMenu" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="Evento">Editar Menú</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="control-label">Lunes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del lunes" id="lunes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Martes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del martes" id="martes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Miércoles</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del miércoles" id="miercoles"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Jueves</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del jueves" id="jueves"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Viernes</label>
+                    <textarea class="form-control" rows="5" placeholder="Menú del viernes" id="viernes"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Fecha Inicio</label>
+                            <input type="date" class="datepicker" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <label class="control-label">Fecha fin</label>
+                            <input type="date" class="datepicker" />
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <br />
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn" style="background-color: #4E5E6A; color:white;">Guardar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de modal para agregar-->
+
+<!--Modal para eliminar menú-->
+<div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <h3><label type="text" class="control-label" id="tituloNoticia">¿Está seguro de querer eliminar este menú?</label></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sí, completamente</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No, fue un error</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de modal para eliminar menú-->
+
+<!--Modal para ver detalles del menú-->
+
+<!--Fin de modal para ver detalles del menú-->
+
+<div class="panel panel-white">
+    <div class="panel-body">
+        <table class="table table-hover table-borderede">
+            <thead style="background-color:#4E5E6A;">
+                <tr style="color:white;">
+                    <th>ID</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Fecha inicio</th>
+                    <th>Fecha fin</th>
+                    <th><center>Reporte</center></th>
+                </tr>                
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th>Perros calientes con agua de jamaica</th>
+                    <th>Sandwich de jamón y queso con jugo de naranja</th>
+                    <th>Sopa fria con galleta soda y agua de horchata</th>
+                    <th>Atún co galleta soda y jugo de manzana</th>
+                    <th>Torta de pollo con agua de jamaica</th>
+                    <th>05/03/2018</th>
+                    <th>09/03/2018</th>
+                    <th>
+                        <table>
+                            <tr>
+                                <td>
+                                    <button type="button" class="btn btn-rounded" style="color:white; background-color: #4E5E6A;" data-toggle="modal" data-target="#" title="Eliminar">
+                                        <span class="icon-trash"></span>
+                                    </button>
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-rounded" style="color:white; background-color: #4E5E6A;" data-toggle="modal" data-target="#" title="Reporte">
+                                        <span class="icon-doc"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<div class="page-footer">
+    <p class="no-s">2017 &copy; Modern by PICTOCAM.</p>
+</div>
