@@ -1,0 +1,228 @@
+﻿
+@{
+    Layout = "~/Views/Shared/layoutA.cshtml";
+}
+
+<script type="text/javascript">
+        function imagepreview(input) {
+            var fildr = new FileReader();
+            fildr.onload = function (e) {
+                $('#imgprw').attr('src', e.target.result);
+            }
+            fildr.readAsDataURL(input.files[0]);
+        }
+    $('#')
+
+</script>
+
+<div class="page-title">
+    <div class="col-md-6">
+        <h3>Eventos</h3>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <div class="col-md-3">
+                <label class="control-label">Búsqueda</label>
+            </div>
+            <div class="col-sm-9">
+                <select class="form-control m-b-sm">
+                    <option>Todo</option>
+                    <option>Noticia</option>
+                    <option>Tip</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-instagram" data-toggle="modal" data-target="#addEvento">Agregar</button>
+
+</div>
+
+<!--Empieza el Modal agregar-->
+<div class="modal fade bs-example-modal-lg" id="addEvento" tabindex="-1" role="dialog" aria-labelledby="titleNoticia" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="Evento">Crear Evento</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Imagen</label>
+                    <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+
+                </div>
+                <div class="form-group">
+                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" id="imgprw" style="width:100%;" />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="control-label">Tipo de evento</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="form-control m-b-sm">
+                            <option>Noticia</option>
+                            <option>Tip</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" >Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de Modal-->
+
+<!--Empieza el Modal detalles-->
+<div class="modal fade bs-example-modal-lg" id="detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Detalles</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label type="text" class="control-label" id="tituloNoticia">Por fin ¡Útiles nuevos!</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="control-label" id="inpNoticia" style="display:none;" value="Por fin ¡Útiles nuevos!" />
+                </div>
+                <div class="form-group">
+                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" style="width:100%;" />
+                </div>
+                <div class="form-group">
+                    <label type="text" class="control-label" id="descripcionNoticia">Alumnos del Centro de Atemción Múltiple del sur, recibieron útiles escolares por parte del gobernador.</label>
+                </div>
+                <div class="form-group">
+                    <label type="text" class="control-label" id="contenidoNoticia">Por fin ¡Útiles nuevos!</label>
+                </div>
+                <div class="form-group">
+                    <label type="text" class="control-label" id="tituloNoticia">Por fin ¡Útiles nuevos!</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de Modal-->
+
+<!--Empieza el Modal editar-->
+<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Editar</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Imagen</label>
+                    <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+
+                </div>
+                <div class="form-group">
+                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" id="imgprw" style="width:100%;" />
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <label class="control-label">Tipo de evento</label>
+                    </div>
+                    <div class="col-sm-9">
+                        <select class="form-control m-b-sm">
+                            <option>Noticia</option>
+                            <option>Tip</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de Modal-->
+
+<!--Empieza el Modal eliminar-->
+<div class="modal fade" id="borrar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" style="color:white;" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Alerta</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <h3><label type="text" class="control-label" id="tituloNoticia">¿Está seguro de querer eliminar el evento?</label></h3>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Sí, completamente</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No, fue un error</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de Modal-->
+
+<div id="main-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="cd-gallery">
+                <li>
+                    <span class="cd-sale"><button type="button" class="btn btn-instagram" data-toggle="modal" data-target="#editar">Editar</button></span>
+                    <a href="#">
+                        <ul class="cd-item-wrapper">
+                            <li class="selected">
+                                <img src="~/Resources/Backend/images/shop/ugmonk-tshirt-1.jpg" alt="Preview image">
+                            </li>
+                        </ul>
+                    </a>
+                    <div class="cd-item-info">
+                        <b><a href="#0">Mountains</a></b>
+                        <em class="cd-price" style="color:darkgray;">12 de Septiembre de 2017</em>
+                        <br />
+                        <em class="cd-price" style="color:darkgray;">Tip</em>
+                        <br />
+                        <em class="cd-price" style="color:darkgray;">Alta</em>
+                    </div>
+                    <div class="cd-item-details">
+                        <a href="#" class="pull-left add-to-cart" data-toggle="modal" data-target="#detalle"><i class="icon-eye"></i>Detalle</a>
+                        <a href="#" class="pull-right details" data-toggle="modal" data-target="#borrar"><i class="icon-trash"></i>Eliminar</a>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+    </div><!-- Row -->
+</div><!-- Main Wrapper -->
+
+
+<div class="page-footer">
+    <p class="no-s">2017 &copy; Modern by PICTOCAM.</p>
+</div>
