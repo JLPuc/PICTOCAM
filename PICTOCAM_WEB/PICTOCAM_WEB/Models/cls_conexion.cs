@@ -21,7 +21,8 @@ namespace PICTOCAM_WEB.Models
         //Método para crear la conexión
         public SqlConnection conexionBD()
         {
-            string sql = "Server=tcp:pictocam.database.windows.net,1433;Initial Catalog=PICTOCAM;Persist Security Info=False;User ID=cam_admin;Password=Ultragointer23;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            string  sql = "Data source =LAPTOP-CU6A815G; Initial Catalog=PICTOCAM; Integrated Security=True";
+            // string sql = "Server=tcp:pictocam.database.windows.net,1433;Initial Catalog=PICTOCAM;Persist Security Info=False;User ID=cam_admin;Password=Ultragointer23;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             return con = new SqlConnection(sql);
         }
 
@@ -57,12 +58,21 @@ namespace PICTOCAM_WEB.Models
             }
             return 1;
         }
-        
+
         /*Método para llenar una tabla virtual con consultas
          * 
          * 
          * Inserte el código aquí
          * 
          */
+
+        public DataSet TablaDS(string sql)
+        {
+            SqlDataAdapter dat = new SqlDataAdapter(sql, conexionBD());
+            DataSet TablaNueva = new DataSet();
+            dat.Fill(TablaNueva);
+            return TablaNueva;
+        }
+
     }
 }
