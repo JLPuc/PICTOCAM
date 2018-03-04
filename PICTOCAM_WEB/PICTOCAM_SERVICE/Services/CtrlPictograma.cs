@@ -13,23 +13,28 @@ namespace PICTOCAM_SERVICE.Services
         cls_PictogramaDAO pictogramaDAO;
         cls_Pictograma pictogramaBO;
 
-        #region "Servicios para la web"
-        //--------------Web--------------------------------
-       
+        /*
+         *Lista de todos los pictogramas
+        */
+        public DataSet ver_Pictogramas(object pictogramaBO)
+        {
+            pictogramaDAO = new cls_PictogramaDAO();
+            return pictogramaDAO.ver_Pictograma_Con01(pictogramaBO);
+        }
 
-
-        #endregion
-
-        #region "Servicios para el movil"
-        //--------------Móvil--------------------------------
+        /*
+         *Retorna un pictograma
+        */
         public DataSet ver_Pictograma(object pictogramaBO)
         {
             pictogramaDAO = new cls_PictogramaDAO();
-            return pictogramaDAO.ver_Pictograma(pictogramaBO);
+            return pictogramaDAO.ver_Pictograma_Con02(pictogramaBO);
         }
 
 
-        #endregion
+
+
+
 
     }
 }

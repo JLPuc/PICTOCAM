@@ -28,22 +28,29 @@ namespace PICTOCAM_SERVICE.UI
         {
             return "Hello World";
         }
+        #region "Servicios para la web"
+        //--------------Web-------------------------------
 
+        #endregion
+
+        #region "Servicios para el movil"
+        //--------------Móvil--------------------------------
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public void ver_Pictograma()
+        public void ver_PictogramasLis()
         {
             ctrlPictograma = new CtrlPictograma();
-
-
             cls_Pictograma pictogramaBO = new cls_Pictograma();
             DataSet dsPictograma = new DataSet();
-            dsPictograma = ctrlPictograma.ver_Pictograma(pictogramaBO);
+            dsPictograma = ctrlPictograma.ver_Pictogramas(pictogramaBO);
             DataTable dtPictograma = dsPictograma.Tables[0];
-
             FormatoJson(dtPictograma);
         }
 
+
+
+
+        #endregion
 
         public void FormatoJson(DataTable dt)
         {
