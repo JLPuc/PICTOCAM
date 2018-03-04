@@ -40,45 +40,59 @@
 
 <!--Empieza el Modal agregar-->
 <div class="modal fade bs-example-modal-lg" id="addEvento" tabindex="-1" role="dialog" aria-labelledby="titleNoticia" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="Evento">Crear Evento</h4>
             </div>
+
             <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Imagen</label>
-                    <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Imagen</label>
+                            <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+                        </div>
+
+                        <div class="form-group">
+                            <img src="~/Resources/Backend/images/coming-soon.jpg" id="imgprw" style="width:100%;" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @* @Html.TextBoxFor(item => model.TITULO, new { htmlAttributes = new { @class = "form control", @id = "tituloEvento", @placeholder = "Titulo del evento"} }) *@
+                            <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="control-label">Tipo de evento</label>
+                            </div>
+                            <div class="col-sm-8">
+                                <select class="form-control m-b-sm">
+                                    <option>Noticia</option>
+                                    <option>Tip</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
-                <div class="form-group">
-                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" id="imgprw" style="width:100%;" />
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <label class="control-label">Tipo de evento</label>
-                    </div>
-                    <div class="col-sm-9">
-                        <select class="form-control m-b-sm">
-                            <option>Noticia</option>
-                            <option>Tip</option>
-                        </select>
-                    </div>
-                </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success" >Guardar</button>
+                <button type="button" class="btn btn-instagram">Guardar</button>
             </div>
         </div>
     </div>
@@ -87,30 +101,35 @@
 
 <!--Empieza el Modal detalles-->
 <div class="modal fade bs-example-modal-lg" id="detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Detalles</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label type="text" class="control-label" id="tituloNoticia">Por fin ¡Útiles nuevos!</label>
-                </div>
-                <div class="form-group">
-                    <input type="text" class="control-label" id="inpNoticia" style="display:none;" value="Por fin ¡Útiles nuevos!" />
-                </div>
-                <div class="form-group">
-                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" style="width:100%;" />
-                </div>
-                <div class="form-group">
-                    <label type="text" class="control-label" id="descripcionNoticia">Alumnos del Centro de Atemción Múltiple del sur, recibieron útiles escolares por parte del gobernador.</label>
-                </div>
-                <div class="form-group">
-                    <label type="text" class="control-label" id="contenidoNoticia">Por fin ¡Útiles nuevos!</label>
-                </div>
-                <div class="form-group">
-                    <label type="text" class="control-label" id="tituloNoticia">Por fin ¡Útiles nuevos!</label>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @*@Html.DisplayFor(item => model.TITULO, new { htmlAtributes = new { @class = "control-label", @id = "inpTitulo"} })*@
+                            <label type="text" class="control-label" id="tituloNoticia">Por fin ¡Útiles nuevos!</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <img src="@*@Html.DisplayFor(item => model.IMAGEN)*@" style="width:100%;" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @*@Html.DisplayFor(item => model.DESCRIPCION, new { htmlAtributes = new { @class = "control-label", @id = "inpDescripcion"} })*@
+                            <label type="text" class="control-label" id="descripcionNoticia">Alumnos del Centro de Atemción Múltiple del sur, recibieron útiles escolares por parte del gobernador.</label>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.DisplayFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "control-label", @id = "inpContenido"} })*@
+                            <label type="text" class="control-label" id="contenidoNoticia">Por fin ¡Útiles nuevos!</label>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -122,41 +141,53 @@
 <!--Fin de Modal-->
 
 <!--Empieza el Modal editar-->
-<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade bs-example-modal-lg" id="editar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Editar</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Imagen</label>
-                    <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+                <div class="row">
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Imagen</label>
+                            <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+                        </div>
+                        <div class="form-group">
+                            <img src="@*@Html.DisplayFor(item => model.IMAGEN)*@" id="imgprw" style="width:100%;" />
+                        </div>
+                    </div>
 
-                </div>
-                <div class="form-group">
-                    <img src="~/Resources/Backend/images/zoom/small/image1.jpg" id="imgprw" style="width:100%;" />
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-3">
-                        <label class="control-label">Tipo de evento</label>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @*@Html.EditorFor(item => model.TITULO, new { htmlAtributes = new { @class = "form-control", @id = "titleEvento", @placeholder = "Título del evento"} })*@
+                            <input type="text" class="form-control" id="tituloEvento" placeholder="Titulo del evento" />
+                        </div>
+                        <div class="form-group">
+                            @*@Html.EditorFor(item => model.DESCRIPCION, new { htmlAtributes = new { @class = "form-control", @id = "descripcionEvento", @placeholder = "Breve descripción del evento"} })*@
+                            <textarea class="form-control" rows="5" placeholder="Breve descripción" id="descripcionEvento"></textarea>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.EditorFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "form-control", @id = "contenidoEvento", @placeholder = "Contenido del evento"} })*@
+                            <textarea class="form-control" rows="5" placeholder="Contenido del evento" id="contenidoEvento"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-3">
+                                <label class="control-label">Tipo de evento</label>
+                            </div>
+                            <div class="col-sm-9">
+
+                                <select class="form-control m-b-sm">
+                                    <option>Noticia</option>
+                                    <option>Tip</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm-9">
-                        <select class="form-control m-b-sm">
-                            <option>Noticia</option>
-                            <option>Tip</option>
-                        </select>
-                    </div>
+                
                 </div>
             </div>
             <div class="modal-footer">
