@@ -8,11 +8,27 @@
         var fildr = new FileReader();
         fildr.onload = function (e) {
             $('#imgprw').attr('src', e.target.result);
+
+            var userObj = {
+                ImagenCadena: e.target.result
+            };
+            $.ajax({
+                url: "/Escuela/CargarImagenSesion",
+                type: "POST",
+                data: JSON.stringify(userObj),
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                },
+                error: function (errormenssage) {
+                    //alert(errormenssage.responseText);
+                }
+            });
         }
         fildr.readAsDataURL(input.files[0]);
 
     }
-    $('#')
+   // $('#')
 
 
         function Agregar() {
@@ -152,9 +168,66 @@
         }
 
 
+        //Cuando inicia la pantalla
+        $(document).ready(function () {
+
+
+            $.ajax({
+                url: "/Escuela/ConsultarInformacion",
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {                   
+                    $('#ClaveEsc').val(result.ListaEscuela["0"].ClaveEsc);
+                    $('#Historia').val(result.ListaEscuela["0"].Historia);
+                    $('#Mision').val(result.ListaEscuela["0"].Mision);
+                    $('#Vision').val(result.ListaEscuela["0"].Vision);
+                    $('#imgprw').attr('src', result.ListaEscuela["0"].Imagen);
+                    $('#Direccion').val(result.ListaEscuela["0"].Direccion);
+                },
+                error: function (errormenssage) {
+                    alert(errormenssage.responseText);
+                }
+            });
+
+
+            $("#guardardatosEscuela").click(function () {
+
+                //var res = validar();
+                //if (res == false) {
+                //    return false;
+                //}
+
+                var userObj = {
+                    ClaveEsc: $('#ClaveEsc').val(),
+                    Historia: $('#Historia').val(),
+                    Mision: $('#Mision').val(),
+                    Vision: $('#Vision').val(),
+                    Imagen: $('#Imagen').val(),
+                    Direccion: $('#Direccion').val(),
+                };
+
+                $.ajax({
+                    url: "/Escuela/Agregar",
+                    data: JSON.stringify(userObj),
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        alert(result);
+                        //loadData();
+                        //$('#addEscuela').modal('hide');
+                    },
+                    error: function (errormenssage) {
+                        alert(errormenssage.responseText);
+                    }
+                });
+
+            });
+          
+        }); //Termina Ajax
 
 </script>
-
 
 
 
@@ -180,7 +253,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <img src="~/Resources/Backend/images/coming-soon.jpg" id="imgprw" style="width:100%;" />@*@Html.DisplayFor(item => model.IMAGEN)*@
+                                <img src="~/Resources/Backend/images/coming-soon.jpg" width="300" height="400" id="imgprw" style="width:100%;" />@*@Html.DisplayFor(item => model.IMAGEN)*@
                             </div>
                             <div class="form-group">
                                 <input type="file" id="fileEvento" onchange="imagepreview(this)" />
@@ -188,6 +261,10 @@
                         </div>
 
                         <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Cls_EscuelaBO.ClaveEsc, new { @class = "form-control", @rows = "1", @id = "ClaveEsc", @placeholder = "Clave de la Escuela" })
+                                @*<input type="text" class="form-control" id="Mision" placeholder="Misión" />*@
+                            </div>
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.Cls_EscuelaBO.Historia, new { @class = "form-control", @rows = "1", @id = "Historia", @placeholder = "Historia" })
                                 @*<input type="text" class="form-control" id="Mision" placeholder="Misión" />*@
@@ -202,7 +279,9 @@
                             </div>
                             <div class="form-group">
                                 @*@Html.EditorFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "form-control", @id = "contenidoEvento", @placeholder = "Contenido del evento"} })*@
-                                <textarea class="form-control" rows="5" placeholder="Dirección" id="direccion"></textarea>
+
+                           
+                                <textarea class="form-control" rows="5" placeholder="Dirección" id="Direccion"></textarea>
                             </div>
                             <div class="col-md-12">
                                 <div class="col-md-10">
@@ -211,7 +290,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group">
                                         @*@Html.EditorFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "form-control", @id = "contenidoEvento", @placeholder = "Contenido del evento"} })*@
-                                        <input class="btn btn-instagram" id="guardardatos" type="submit" value="Guardar" />
+                                        <input class="btn btn-instagram" id="guardardatosEscuela" type="submit" value="Guardar" />
                                     </div>
                                 </div>
                             </div>

@@ -14,17 +14,28 @@ namespace PICTOCAM_SERVICE.DAO
     public class Cls_EscuelaDAO
     {
         cls_ConexionDAO obj_conexion = new cls_ConexionDAO();
+
+        public DataSet ConsultarEscuela(object obj)
+        {
+            cls_EscuelaBO evento = (BO.cls_EscuelaBO)obj;
+            obj_conexion = new cls_ConexionDAO();
+            string sql;
+            sql = "SELECT* FROM ESCUELA";
+            return obj_conexion.TablaDS(sql);
+        }
+
         public int AgregarEscuela(object obj)
         {
             SqlCommand cmd = new SqlCommand();
-            clsEscuelaModel escuela = (BO.clsEscuelaModel)obj;
-            cmd.CommandText = "ESCUELALT";
+            cls_EscuelaBO escuela = (BO.cls_EscuelaBO)obj;
+            cmd.CommandText = "ESCUELAALT";
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@Par_HISTORIA", SqlDbType.VarChar).Value = escuela.Cls_EscuelaBO.Historia;
-            cmd.Parameters.Add("@Par_MISION", SqlDbType.VarChar).Value = escuela.Cls_EscuelaBO.Mision;
-            cmd.Parameters.Add("@Par_VISION", SqlDbType.VarChar).Value = escuela.Cls_EscuelaBO.Vision;
-            cmd.Parameters.Add("@Par_IMAGEN", SqlDbType.VarChar).Value = "imagen";
-            cmd.Parameters.Add("@Par_DIRECCION", SqlDbType.VarChar).Value = escuela.Cls_EscuelaBO.Direccion;
+            cmd.Parameters.Add("@Par_CLAVE", SqlDbType.VarChar).Value = escuela.ClaveEsc;
+            cmd.Parameters.Add("@Par_HISTORIA", SqlDbType.VarChar).Value = escuela.Historia;
+            cmd.Parameters.Add("@Par_MISION", SqlDbType.VarChar).Value = escuela.Mision;
+            cmd.Parameters.Add("@Par_VISION", SqlDbType.VarChar).Value = escuela.Vision;
+            cmd.Parameters.Add("@Par_IMAGEN", SqlDbType.VarChar).Value = escuela.Imagen;
+            cmd.Parameters.Add("@Par_DIRECCION", SqlDbType.VarChar).Value = escuela.Direccion;
             cmd.Parameters.Add("@Par_USUARIO", SqlDbType.VarChar).Value = "kiara10@outlook.com";
             return obj_conexion.executeSQL(cmd);
 
@@ -54,12 +65,12 @@ namespace PICTOCAM_SERVICE.DAO
             return obj_conexion.executeSQL(cmd);
         }
 
-        public DataSet ConsultarEscuela(object obj)
+        public DataSet ConsultarInformacioEscuela(object obj)
         {
-            cls_EscuelaBO evento = (BO.cls_EscuelaBO)obj;
+            cls_EscuelaBO escuelBo = (BO.cls_EscuelaBO)obj;
             obj_conexion = new cls_ConexionDAO();
             string sql;
-            sql = "SELECT* FROM ESCUELA";
+            sql = "EXEC ESCUELACON 0" +escuelBo.ClaveEsc;
             return obj_conexion.TablaDS(sql);
         }
 

@@ -31,7 +31,7 @@ namespace PICTOCAM_SERVICE.Services
         public DataSet ConsultarEscuela(object obj)
         {
             dao = new DAO.Cls_EscuelaDAO();
-            return dao.ConsultarEscuela(obj);
+            return dao.ConsultarInformacioEscuela(obj);
         }
 
     }
