@@ -1,0 +1,306 @@
+﻿@model PICTOCAM_SERVICE.BO.clsEscuelaModel
+@{
+    ViewBag.Title = "Detalles";
+    Layout = "~/Views/Shared/layoutA.cshtml";
+}
+<script type="text/javascript">
+    function imagepreview(input) {
+        var fildr = new FileReader();
+        fildr.onload = function (e) {
+            $('#imgprw').attr('src', e.target.result);
+        }
+        fildr.readAsDataURL(input.files[0]);
+
+    }
+    $('#')
+
+
+        function Agregar() {
+            var res = validar();
+            if (res == false) {
+                return false;
+            }
+            var userObj = {
+                //ID1: $('#ID').val(),
+                claveEsc: $('#CLAVE').val(),
+                historia: $('#Historia').val(),
+                mision: $('#Mision').val(),
+                vision: $('#Vision').val(),
+                imagen: $('#Imagen').val(),
+                direccion: $('#Direccion').val(),
+             
+             
+            };
+
+            $.ajax({
+                url: "/Escuela/Agregar",
+                data: JSON.stringify(userObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    loadData();
+                    $('#addEscuela').modal('hide');
+
+                },
+                error: function (errormenssage) {
+                    alert(errormenssage.responseText);
+                }
+            });
+        }
+
+
+
+
+
+        function CargarDatos(userCLAVE) {
+            $('#Historia').css('border-color', 'lightgrey');
+            $('#Mision').css('border-color', 'lightgrey');
+            $('#Vision').css('border-color', 'lightgrey');
+            $('#Imagen').css('border-color', 'lightgrey');
+            $('#Direccion').css('border-color', 'lightgrey');
+            
+
+            $.ajax({
+                url: "/Escuela/cargar/" + userCLAVE,
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    $('#CLAVE').val(result.claveEsc);
+                    $('#Historia').val(result.historia);
+                    $('#Imagen').val(result.imagen);
+                    $('#Mision').val(result.mision);
+                    $('#Vision').val(result.vision);
+                    $('#Direccion').val(result.direccion);
+
+
+                    $('#detalle').modal('show');
+                    $('#detalle').show();
+                    $('#btnAdd').hide();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            return false;
+        }
+
+        function Eliminar(CLAVE) {
+            var ans = $('#borrar').modal('show');
+            // var ans = confirm("¿Esta seguro que desea eliminar este usuario?");
+            if (ans) {
+                $.ajax({
+                    url: "Escuela/Eliminar/" + ID,
+                    type: "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (result) {
+                        loadData();
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+            }
+        }
+
+        function CargarDatos(userID) {
+            $('#Tit').css('border-color', 'lightgrey');
+            $('#DescripcionEvento').css('border-color', 'lightgrey');
+            $('#ContenidoEvento').css('border-color', 'lightgrey');
+
+            $.ajax({
+                url: "/Evento/cargar/" + userID,
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (result) {
+                    $('#ID').val(result.Id);
+                    $('#TituloEvento').val(result.Titulo);
+                    $('#DescripcionEvento').val(result.Descripcion);
+                    $('#ContenidoEvento').val(result.Contenido);
+
+                    $('#detalle').modal('show');
+                    $('#detalle').show();
+                    $('#btnAdd').hide();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            return false;
+        }
+
+        function Eliminar(ID) {
+            var ans = $('#borrar').modal('show');
+           // var ans = confirm("¿Esta seguro que desea eliminar este usuario?");
+            if (ans) {
+                $.ajax({
+                    url: "/Evento/Eliminar/" + ID,
+                    type: "POST",
+                    contentType: "application/json;charset=UTF-8",
+                    dataType: "json",
+                    success: function (result) {
+                        loadData();
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responseText);
+                    }
+                });
+            }
+        }
+
+
+
+</script>
+
+
+
+
+
+
+
+<div class="page-title">
+    <h3>Escuela</h3>
+</div>
+
+<div id="main-wrapper">
+    <div class="row">
+
+    <!--Panel de Acerca de la escuela-->
+        <div class="col-md-12">
+            <div class="panel panel-white">
+                <div class="panel-heading clearfix">
+                    <h4>Escuela</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <img src="~/Resources/Backend/images/coming-soon.jpg" id="imgprw" style="width:100%;" />@*@Html.DisplayFor(item => model.IMAGEN)*@
+                            </div>
+                            <div class="form-group">
+                                <input type="file" id="fileEvento" onchange="imagepreview(this)" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Cls_EscuelaBO.Historia, new { @class = "form-control", @rows = "1", @id = "Historia", @placeholder = "Historia" })
+                                @*<input type="text" class="form-control" id="Mision" placeholder="Misión" />*@
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Cls_EscuelaBO.Mision, new { @class = "form-control", @rows = "1", @id = "Mision", @placeholder = "Misión" })
+                                @*<textarea class="form-control" rows="5" placeholder="Visión" id="vision"></textarea>*@
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Cls_EscuelaBO.Vision, new { @class = "form-control", @rows = "1", @id = "Vision", @placeholder = "Visión" })
+                                @*<textarea class="form-control" rows="5" placeholder="Historia" id="historia"></textarea>*@
+                            </div>
+                            <div class="form-group">
+                                @*@Html.EditorFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "form-control", @id = "contenidoEvento", @placeholder = "Contenido del evento"} })*@
+                                <textarea class="form-control" rows="5" placeholder="Dirección" id="direccion"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="col-md-10">
+
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        @*@Html.EditorFor(item => model.CONTENIDO, new { htmlAtributes = new { @class = "form-control", @id = "contenidoEvento", @placeholder = "Contenido del evento"} })*@
+                                        <input class="btn btn-instagram" id="guardardatos" type="submit" value="Guardar" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--#Termina panel de acerca-->
+
+    <!--Panel de Metodologias-->
+        <div class="col-md-12">
+            <div class="panel panel-white">
+                <div class="panel-heading clearfix">
+                    <h4>Metodologías</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre de la metodología..." />
+                            </div>
+
+                            <div class="form-group">
+                                <textarea class="form-control" id="descripcion" placeholder="Descripción de la metodología..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-instagram glyphicon glyphicon-floppy-disk" style="color:white;" id="save" value="Guardar" />                                
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <table class="table table-hover table-bordered" id="metodologia">
+                                <thead style="background-color:#4E5E6A;">
+                                    <tr style="color:white;">
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Escuela</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>1</th> <!--El sistema de comunicación por intercambio de imágenes (Picture Exchange Communication System o PECS) es un sistema de aprendizaje que permite a los niños con poca o ninguna capacidad verbal comunicarse usando imágenes.-->
+                                        <th>PECS</th>
+                                        <th>ABC123</th>
+                                        <th>
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <button class="btn btn-instagram" style="color: white;">
+                                                                <span class="glyphicon glyphicon glyphicon-eye-open"></span>
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button class="btn btn-instagram" style="color: white;">
+                                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!--#Termina panel de metodologías-->
+
+    </div><!-- Row -->
+</div><!-- Main Wrapper -->
+
+
+<div class="page-footer">
+    <p class="no-s">2017 &copy; Modern by PICTOCAM.</p>
+</div>

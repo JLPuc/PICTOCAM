@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = "~/Views/Shared/layoutA.cshtml";
+}
+
+<div class="col-md-12">
+    <ul class="cd-gallery">
+        @*Se crea un foreach para recorrer la lista devuelta y poder generar la lista de eventos*@
+        @*@foreach()
+          {  *@
+        <li>
+            <a href="#">
+                <ul class="cd-item-wrapper">
+                    <li>
+                        <img src="@*display para mostar la imagen*@" alt="@*Nombre de ka noticias*@" />
+                    </li>
+                </ul>
+            </a>
+            <div class="cd-item-info">
+                <b><a href="@*obtenemos el id para ir a la vista*@">@*Mostramos el titulo de la noticia o tip*@</a></b>
+                <em class="cd-price">@*Mostraoms el tipo de evento que es, ya sea noticia o tip*@</em>
+            </div>
+        </li>
+        @*}*@
+    </ul>
+</div>
