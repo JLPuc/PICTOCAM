@@ -63,10 +63,19 @@ namespace PICTOCAM_SERVICE.DAO
 
         public DataSet TablaDS(string sql)
         {
-            SqlDataAdapter dat = new SqlDataAdapter(sql, conexionBD());
-            DataSet TablaNueva = new DataSet();
-            dat.Fill(TablaNueva);
-            return TablaNueva;
+            
+
+                SqlDataAdapter dat = new SqlDataAdapter(sql, conexionBD());
+                DataSet TablaNueva = new DataSet();
+                dat.Fill(TablaNueva);
+                return TablaNueva;
+
+
+
+           
+
+           
+
         }
     }
 }
